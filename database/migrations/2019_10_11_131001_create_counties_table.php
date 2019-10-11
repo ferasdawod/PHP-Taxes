@@ -18,6 +18,7 @@ class CreateCountiesTable extends Migration
 
             $table->string('name');
             $table->double('tax_rate')->default(0);
+            $table->decimal('collected_taxes', 15, 4)->default(0);
 
             $table->unsignedInteger('state_id');
             $table->foreign('state_id')->references('id')->on('states');
