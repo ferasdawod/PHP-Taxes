@@ -11,11 +11,14 @@ class County extends Model
     public $fillable = [
         'name',
         'tax_rate',
-        'collected_taxes',
         'state_id',
     ];
 
     public function state() : BelongsTo {
         return $this->belongsTo(State::class, 'state_id', 'id');
+    }
+
+    public function entries() : HasMany {
+        return $this->hasMany(TaxEntry::class, 'county_id', 'id');
     }
 }

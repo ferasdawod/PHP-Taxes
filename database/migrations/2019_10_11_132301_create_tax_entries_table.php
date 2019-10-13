@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCountiesTable extends Migration
+class CreateTaxEntriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,13 @@ class CreateCountiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('counties', function (Blueprint $table) {
+        Schema::create('tax_entries', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->string('name');
-            $table->double('tax_rate')->default(0);
+            $table->decimal('amount', 15, 4)->default(0);
 
-            $table->unsignedInteger('state_id');
-            $table->foreign('state_id')->references('id')->on('states');
+            $table->unsignedInteger('county_id');
+            $table->foreign('county_id')->references('id')->on('counties');
 
             $table->timestamps();
         });
@@ -33,6 +32,6 @@ class CreateCountiesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('counties');
+        Schema::dropIfExists('tax_entries');
     }
 }
