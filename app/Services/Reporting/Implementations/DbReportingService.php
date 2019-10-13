@@ -1,13 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: ASUS
- * Date: 13/10/2019
- * Time: 10:16 PM
- */
 
 namespace App\Services\Reporting\Implementations;
-
 
 use App\Services\Reporting\IReportingService;
 
