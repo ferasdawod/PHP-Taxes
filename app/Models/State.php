@@ -5,7 +5,7 @@ namespace App\Models;
 use App\Interfaces\IState;
 use Illuminate\Database\Eloquent\Model;
 
-class State extends Model implements IState
+class State extends Model
 {
     public $fillable = [
         'name',
