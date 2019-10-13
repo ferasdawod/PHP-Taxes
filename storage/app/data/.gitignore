@@ -1,4 +1,3 @@
 *
 !.gitignore
-!collections.csv
-!counties.csv
+!data.csv
