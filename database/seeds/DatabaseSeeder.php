@@ -11,6 +11,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
+        factory(\App\Models\State::class, 5)->create()->each(function (\App\Models\State $state) {
+            $state->counties()->saveMany(factory(\App\Models\County::class, rand(2, 10))->make());
+            $state->counties->each(function (\App\Models\County $county) {
+                $county->entries()->saveMany(factory(\App\Models\TaxEntry::class, rand(10, 50))->make());
+            });
+        });
     }
 }
