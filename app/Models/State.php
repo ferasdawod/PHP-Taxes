@@ -10,8 +10,4 @@ class State extends Model
     public $fillable = [
         'name',
     ];
-
-    function getName(): String {
-        return $this->name;
-    }
 }
