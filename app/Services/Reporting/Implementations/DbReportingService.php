@@ -27,7 +27,7 @@ class DbReportingService implements IReportingService
         $result = State::query()->with('entries')
             ->get()
             ->map(function (State $state) {
-                return new StateReportUnit($state, $state->entries->avg('amount'));
+                return new StateReportUnit($state->id, $state->name, $state->entries->avg('amount'));
             })
             ->all();
 
@@ -39,7 +39,7 @@ class DbReportingService implements IReportingService
         $result = State::query()->with('entries')
             ->get()
             ->map(function (State $state) {
-                return new StateReportUnit($state, $state->entries->sum('amount'));
+                return new StateReportUnit($state->id, $state->name, $state->entries->sum('amount'));
             })
             ->all();
 
@@ -51,7 +51,7 @@ class DbReportingService implements IReportingService
         $result = State::query()->with('counties')
             ->get()
             ->map(function (State $state) {
-                return new StateReportUnit($state, $state->counties->avg('tax_rate'));
+                return new StateReportUnit($state->id, $state->name, $state->counties->avg('tax_rate'));
             })
             ->all();
 

@@ -22,10 +22,10 @@ class StateReportUnit
      */
     private $value;
 
-    public function __construct(State $state, float $value)
+    public function __construct(int $stateId, string $stateName, float $value)
     {
-        $this->id = $state->id;
-        $this->name = $state->name;
+        $this->id = $stateId;
+        $this->name = $stateName;
         $this->value = $value;
     }
 
