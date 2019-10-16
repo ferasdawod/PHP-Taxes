@@ -13,7 +13,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        \DB::listen(function($sql) {
+            \Log::info($sql->sql);
+            \Log::info($sql->bindings);
+            \Log::info($sql->time);
+        });
     }
 
     /**
