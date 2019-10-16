@@ -2,11 +2,26 @@
 
 namespace App\Services\Reporting;
 
+use App\ViewModels\Reporting\StateReportUnit;
+
 interface IReportingService
 {
-    function getStatesAverageTaxes() : array ;
-    function getStatesTotalTaxes() : array;
-    function getStatesAverageTaxRate() : array;
-    function getAverageTaxRate() : float;
-    function getTotalTaxes() : float;
+    /**
+     * @return StateReportUnit[]
+     */
+    public function getStatesAverageTaxes() : array ;
+
+    /**
+     * @return StateReportUnit[]
+     */
+    public function getStatesTotalTaxes() : array;
+
+    /**
+     * @return StateReportUnit[]
+     */
+    public function getStatesAverageTaxRate() : array;
+
+    public function getAverageTaxRate() : float;
+
+    public function getTotalTaxes() : float;
 }
