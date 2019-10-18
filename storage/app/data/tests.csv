@@ -1,0 +1,7 @@
+state_id,state_name,county_id,county_name,amount,tax_rate,date
+1,State A,1,County A1,1000,1,2019-10-10 20:14:26
+1,State A,2,County A1,2000,2,2019-10-12 20:14:26
+1,State A,3,County A2,3000,3,2019-10-11 20:14:26
+1,State A,4,County A2,4000,4,2019-10-11 20:14:26
+2,State B,7,County B1,5000,5,2019-10-1 20:14:26
+2,State B,8,County B2,6000,6,2019-10-5 20:14:26
