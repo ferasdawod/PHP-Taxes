@@ -53,6 +53,9 @@ class CsvReportingService implements IReportingService
         return $result;
     }
 
+    /**
+     * @return float
+     */
     public function getAverageTaxRate(): float
     {
         $data = collect($this->loadDataFromFile());
@@ -63,6 +66,9 @@ class CsvReportingService implements IReportingService
         return $result;
     }
 
+    /**
+     * @return float
+     */
     public function getTotalTaxes(): float
     {
         $data = collect($this->loadDataFromFile());
@@ -73,6 +79,10 @@ class CsvReportingService implements IReportingService
         return $result;
     }
 
+    /**
+     * Load the data csv file from storage into an array of rows
+     * @return array
+     */
     protected function loadDataFromFile(): array
     {
         // load the data file contents and parse the csv format then
@@ -82,6 +92,11 @@ class CsvReportingService implements IReportingService
         return array_splice($data, 1);
     }
 
+    /**
+     * @param array $rows the complete data rows
+     * @param callable $aggregateFunc The aggregation function which receives the state rows array and returns the aggregated value
+     * @return array
+     */
     protected function aggregateStates(array $rows, $aggregateFunc)
     {
         $data = collect($rows);
