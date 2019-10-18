@@ -9,6 +9,7 @@ This is a simple PHP Laravel application to report on the taxes of a given count
 - Multiple counties per state.
 - Separate tax entries per county.
 - Multiple data sources for reporting, currently a database provider and a CSV file based provider.
+- Unit tests for validating the reporting results
 
 ## Requirements
 
@@ -16,7 +17,7 @@ This app uses Laravel version 5.8, therefore you can head to the [official Larav
 
 ## Usage
 
-Start by cloning this repo
+You can follow these instruction to quickly get the project up and running:
 
 ```
 # clone the project and install the dependencies
