@@ -9,12 +9,23 @@ use Illuminate\Http\Request;
 
 class ReportingController extends Controller
 {
+    /**
+     * @var IReportingService
+     */
     public $reportingService;
 
+    /**
+     * ReportingController constructor.
+     * @param IReportingService $reportingService
+     */
     public function __construct(IReportingService $reportingService) {
         $this->reportingService = $reportingService;
     }
 
+    /**
+     * Returns statistics about the country and states' tax rates and collected taxes
+     * @return array
+     */
     public function taxes() {
         $data = [
             'total_taxes' => $this->reportingService->getTotalTaxes(),
