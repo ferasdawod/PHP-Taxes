@@ -36,6 +36,8 @@ php artisan serve
 
 Remember to configure your own parameters for the database connection in the `.env` file.
 
+After getting the project running you can get the reporting data by making a `GET` request to the following endpoint `<host>/api/reporting/taxes`
+
 ## Configuration
 
 You can switch the used data source in the `config/reporting.php` file, the currently supported values for the `source` param are: `db` and `csv` for the database and the file based providers respectively.
