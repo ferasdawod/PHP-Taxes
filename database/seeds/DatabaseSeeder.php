@@ -1,5 +1,8 @@
 <?php
 
+use App\Models\County;
+use App\Models\State;
+use App\Models\TaxEntry;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -11,10 +14,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        factory(\App\Models\State::class, 5)->create()->each(function (\App\Models\State $state) {
-            $state->counties()->saveMany(factory(\App\Models\County::class, rand(1, 5))->make());
-            $state->counties->each(function (\App\Models\County $county) {
-                $county->entries()->saveMany(factory(\App\Models\TaxEntry::class, rand(2, 10))->make());
+        $maxCountiesPerState = 5;
+        $maxEntriesPerCounty = 10;
+
+        factory(State::class, 5)->create()->each(function (State $state) use ($maxCountiesPerState, $maxEntriesPerCounty) {
+            $state->counties()->saveMany(factory(County::class, rand(1, $maxCountiesPerState))->make());
+            $state->counties->each(function (County $county) use ($maxEntriesPerCounty) {
+                $county->entries()->saveMany(factory(TaxEntry::class, rand(1, $maxEntriesPerCounty))->make());
             });
         });
     }
