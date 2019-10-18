@@ -3,9 +3,10 @@
 namespace App\ViewModels\Reporting;
 
 use App\Models\State;
+use App\ViewModels\IArrayable;
 use test\Mockery\MagicParams;
 
-class StateReportUnit
+class StateReportUnit implements IArrayable
 {
     /**
      * @var int the state id
@@ -22,6 +23,12 @@ class StateReportUnit
      */
     private $value;
 
+    /**
+     * StateReportUnit constructor.
+     * @param int $stateId
+     * @param string $stateName
+     * @param float $value The report unit value
+     */
     public function __construct(int $stateId, string $stateName, float $value)
     {
         $this->id = $stateId;
@@ -41,6 +48,9 @@ class StateReportUnit
         return $this->value;
     }
 
+    /**
+     * @return array Converts the report unit into an array for serialization
+     */
     public function toArray() : array {
         return [
             'id' => $this->getId(),
