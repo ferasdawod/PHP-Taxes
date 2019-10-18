@@ -15,13 +15,13 @@ class DbReportingService implements IReportingService
     public function getStatesAverageTaxes(): array
     {
         // Implementation #1 (database query)
-//        $result = DB::table('states')
-//            ->join('counties', 'states.id', '=', 'counties.state_id')
-//            ->join('tax_entries', 'tax_entries.county_id', '=', 'counties.id')
-//            ->selectRaw('states.id, states.name, AVG(tax_entries.amount) as avg_taxes')
-//            ->groupBy('states.id')
-//            ->get()
-//            ->toArray();
+        // $result = DB::table('states')
+        //     ->join('counties', 'states.id', '=', 'counties.state_id')
+        //     ->join('tax_entries', 'tax_entries.county_id', '=', 'counties.id')
+        //     ->selectRaw('states.id, states.name, AVG(tax_entries.amount) as avg_taxes')
+        //     ->groupBy('states.id')
+        //     ->get()
+        //     ->toArray();
 
         // Implementation #2 (client side)
         $result = State::query()->with('entries')
@@ -60,11 +60,11 @@ class DbReportingService implements IReportingService
 
     public function getAverageTaxRate(): float
     {
-        return County::query()->average('tax_rate');
+        return County::query()->average('tax_rate') ?? 0;
     }
 
     public function getTotalTaxes(): float
     {
-        return TaxEntry::query()->sum('amount');
+        return TaxEntry::query()->sum('amount') ?? 0;
     }
 }
